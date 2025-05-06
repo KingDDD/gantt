@@ -37,7 +37,7 @@ fig = px.timeline(
     color_discrete_map=intense_colors,
     hover_data=["Assigned To"],
     text="Assigned To",
-    title="Construction Gantt Chart (Weekends Highlighted)"
+    title="Klockner Mockup Gantt Chart"
 )
 fig.update_yaxes(autorange="reversed")
 fig.update_traces(textposition='inside', insidetextanchor='start', textfont_color='white')
