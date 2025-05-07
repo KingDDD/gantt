@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Task list with assignments
+# enumerate tasks
 tasks = [
     {"Task": "Site Survey", "Start": "2025-05-01", "Finish": "2025-05-05", "Phase": "Design", "Assigned To": "Survey Team"},
     {"Task": "Architectural Design", "Start": "2025-05-06", "Finish": "2025-05-20", "Phase": "Design", "Assigned To": "Architects"},
@@ -20,14 +20,14 @@ df = pd.DataFrame(tasks)
 df["Start"] = pd.to_datetime(df["Start"])
 df["Finish"] = pd.to_datetime(df["Finish"])
 
-# Intense color mapping
+# color scheme
 intense_colors = {
     "Design": "#e74c3c",
     "Subcontracting": "#f1c40f",
     "Implementation": "#2ecc71"
 }
 
-# Create initial Gantt chart
+# generate gantt chart frame
 fig = px.timeline(
     df,
     x_start="Start",
@@ -42,7 +42,7 @@ fig = px.timeline(
 fig.update_yaxes(autorange="reversed")
 fig.update_traces(textposition='inside', insidetextanchor='start', textfont_color='white')
 
-# Dark background and styled legend
+# cosmetics and legend position
 fig.update_layout(
     plot_bgcolor="#1e1e1e",
     paper_bgcolor="#1e1e1e",
@@ -59,22 +59,22 @@ fig.update_layout(
     height=550
 )
 
-# Add weekend shading (Saturday/Sunday)
+# shade for weekends
 start_date = df["Start"].min()
 end_date = df["Finish"].max()
 current = start_date
 
 while current <= end_date:
-    if current.weekday() == 5:  # Saturday
+    if current.weekday() == 5:  # saturday
         weekend_start = current
-        weekend_end = current + timedelta(days=2)  # Sat + Sun
+        weekend_end = current + timedelta(days=2)  # sat + sun
         fig.add_shape(
             type="rect",
             x0=weekend_start,
             x1=weekend_end,
             y0=-0.5,
             y1=len(df["Task"]) - 0.5,
-            fillcolor="rgba(255, 255, 255, 0.05)",  # subtle white overlay
+            fillcolor="rgba(255, 255, 255, 0.05)",  # white overlay
             layer="below",
             line_width=0,
         )
