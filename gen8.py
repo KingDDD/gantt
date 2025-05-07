@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 
 # enumerate tasks
 tasks = [
+    {"Task": "This is a Test", "Start": "2025-04-25", "Finish": "2025-05-01", "Phase": "TestPHASE", "Assigned To": "Damian Lopez"},
     {"Task": "Site Survey", "Start": "2025-05-01", "Finish": "2025-05-05", "Phase": "Design", "Assigned To": "Survey Team"},
     {"Task": "Architectural Design", "Start": "2025-05-06", "Finish": "2025-05-20", "Phase": "Design", "Assigned To": "Architects"},
     {"Task": "Structural Engineering", "Start": "2025-05-10", "Finish": "2025-05-25", "Phase": "Design", "Assigned To": "Engineers"},
